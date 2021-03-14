@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dbSchema": "mysql -u root -p < db/schema.sql",
+    "dbSeed": "node db/seed.js",
     "db": "nodemon db/index.js"
   },
   "repository": {
