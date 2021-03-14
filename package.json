@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dbSchema": "mysql -u root -p < db/schema.sql"
+    "dbSchema": "mysql -u root -p < db/schema.sql",
+    "db": "nodemon db/index.js"
   },
   "repository": {
     "type": "git",
