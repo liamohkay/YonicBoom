@@ -1,0 +1,24 @@
+{
+  "name": "YonicBoom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dbSchema": "mysql -u root -p < db/schema.sql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liamohkay/YonicBoom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liamohkay/YonicBoom/issues"
+  },
+  "homepage": "https://github.com/liamohkay/YonicBoom#readme",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7"
+  }
+}
