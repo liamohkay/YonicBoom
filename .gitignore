@@ -2,3 +2,4 @@ node_modules
 db/config.js
 db/schema.sql
 db/seed.xlsx
+dist/bundle.js
