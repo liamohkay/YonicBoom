@@ -4,6 +4,10 @@
   - get unique genres from db + store on front end
 - Search results should have aliases + link to separate artist profile for alias
 - Fix DB entries w/ aliases still in name
+- Clicking an artist should render like an artist profile component?
+- idk how tf im gonna do the related artists
+- bandcamp api?
+
 
 Firebase stuff
 - Figure out how to firebase lol
