@@ -3,7 +3,9 @@
 - Set up various query filters
   - get unique genres from db + store on front end
 - Search results should have aliases + link to separate artist profile for alias
+- Fix DB entries w/ aliases still in name
 
 Firebase stuff
+- Figure out how to firebase lol
 - Build out email sign up
 - Build out kendall admin approval
