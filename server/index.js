@@ -16,5 +16,4 @@ const server = express()
   .use(bodyParser.urlencoded({ extended: true }))
   .use(express.static(path.join(__dirname, '../dist/')))
 
-console.log(path.join(__dirname, '../dist/'));
 server.listen(port, () => console.log(`Listening on port ${port}`));
