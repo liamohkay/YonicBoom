@@ -6,7 +6,7 @@ export const App = () => {
   const [results, setResults] = useState([]);
 
   const handleSearch = () => {
-    axios.get('/api/artist', { artist: search})
+    axios.get('/api/artist/', { params: { search: search } })
       .then(resp => setResults(resp.data))
       .catch(err => console.log(err))
   }
@@ -17,6 +17,7 @@ export const App = () => {
         <h1>YonicBoom</h1>
         <div>women, nonbinary, and trans artists in dance</div>
       </div>
+      {JSON.stringify(results)}
       <div className="search-container">
         <input type="text" onChange={(e) => setSearch(e.target.value)}></input>
         <button onClick={handleSearch}>Search</button>
