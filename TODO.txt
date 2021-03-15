@@ -1,0 +1,7 @@
+- Need to figure out how to scrape soundcloud + bandcamp for profile pictures (this is gonna suck should probably seed db w/ results)
+- Set front end page routes (react router)
+- Build out search functionality + api routes + db queries
+
+Firebase stuff
+- Build out email sign up
+- Build out kendall admin approval

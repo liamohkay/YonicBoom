@@ -7,7 +7,6 @@
     "build": "webpack --watch",
     "dbSchema": "mysql -u root -p < db/schema.sql",
     "dbSeed": "node db/seed.js",
-    "db": "nodemon db/index.js",
     "start": "nodemon server/index.js"
   },
   "repository": {
