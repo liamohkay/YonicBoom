@@ -1,5 +1,4 @@
-const db = require('../db/index.js');
-const dbQueries = require('./db/dbQueries.js');
+const dbQueries = require('../db/dbQueries.js');
 
 module.exports = {
   searchArtist: (req, res) => {
