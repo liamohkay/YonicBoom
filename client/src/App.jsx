@@ -6,7 +6,7 @@ export const App = () => {
   const [results, setResults] = useState([]);
 
   const handleSearch = () => {
-    axios.get('/api/artist')
+    axios.get('/api/artist', { artist: search})
       .then(resp => setResults(resp.data))
       .catch(err => console.log(err))
   }
