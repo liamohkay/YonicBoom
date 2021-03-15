@@ -1,6 +1,5 @@
 - Need to figure out how to scrape soundcloud + bandcamp for profile pictures (this is gonna suck should probably seed db w/ results)
 - Set front end page routes (react router)
-- Build out search functionality + api routes + db queries
 - Set up various query filters
   - get unique genres from db + store on front end
 - Search results should have aliases + link to separate artist profile for alias

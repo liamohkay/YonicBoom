@@ -19,6 +19,7 @@ export const App = () => {
       </div>
       {JSON.stringify(results)}
       <div className="search-container">
+        <h3>search the database...</h3>
         <input type="text" onChange={(e) => setSearch(e.target.value)}></input>
         <button onClick={handleSearch}>Search</button>
       </div>
