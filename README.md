@@ -1,0 +1,2 @@
+# Currently Under Construction
+YonicBoom will be a website / searchable database of musical artists who identify as woman, non-binary, or transgender. Users will be able to search artists by name and filter by genre, displaying artists from the database and serving as a gateway to support the artists music.
