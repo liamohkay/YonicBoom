@@ -5,7 +5,6 @@ import { SignIn } from "@clerk/nextjs";
 import { useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
-import { Sign } from "crypto";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
