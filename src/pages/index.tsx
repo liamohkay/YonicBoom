@@ -7,7 +7,6 @@ import { useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
   
   return (
     <>
@@ -46,11 +45,12 @@ const Home: NextPage = () => {
             >
               <h3 className="text-2xl font-bold">Listen to the Arhive →</h3>
               <div className="text-lg">
-                It's soundcloud bitch
+                Soundcloud bitch
               </div>
             </Link>
           </div>
         </div>
+        <AuthShowcase />
       </main>
     </>
   );
