@@ -23,8 +23,8 @@ const Home: NextPage = () => {
           <div className="grid grid-cols-1">
             <h3 className="text-2xl font-bold text-white text-center py-5">YonicBoom started construction 5/10/23.</h3>
             <div className="text-med text-white px-2">
-              It is a community fed database aimed to amplify musical artists who identify as female, trans, non-binary and beyond.
-              YonicBoom originally started as a weekly radio show in 2013, and we are excited to build the next iteration of this project.
+              {`It is a community fed database aimed to amplify musical artists who identify as female, trans, non-binary and beyond.
+              YonicBoom originally started as a weekly radio show in 2013, and we are excited to build the next iteration of this project.`}
             </div>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
@@ -45,7 +45,7 @@ const Home: NextPage = () => {
             >
               <h3 className="text-2xl font-bold">Listen to the Arhive →</h3>
               <div className="text-lg">
-                Soundcloud bitch
+                Soundcloud!
               </div>
             </Link>
           </div>
