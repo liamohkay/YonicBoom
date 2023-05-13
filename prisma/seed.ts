@@ -16,10 +16,13 @@ async function main() {
     .on('data', (data: any) => results.push(data))
     .on('end', async () => {
       let allArtists: any = [];
+      let allAliases: any = [];
 
-      results.forEach((row: any) => {
+      results.forEach((row: any, i: number) => {
         Object.keys(row).map((col: string) => row[col] = row[col].trim());
+        
         allArtists.push({
+          id: i,
           artist: row.artist,
           genre: row.genre,
           pronoun: row.pronoun,
@@ -29,8 +32,31 @@ async function main() {
         })
       })
 
-      await prisma.Artist.createMany({ data: allArtists })
+      await prisma.Artist.createMany({ data: allArtists, skipDuplicates: true })
       console.log('Added artist data')
+
+      results.forEach((row: any, i: number) => {
+        Object.keys(row).map((col: string) => row[col] = row[col].trim());
+        if (row.alias1 !== '' && /^[A-Za-z][A-Za-z0-9]*$/.test(row.alias1)) {
+          allAliases.push({
+            alias: row.alias1,
+            artistId: i,
+            createdBy: 'liamohkay@gmail.com'
+          })
+        } 
+        
+        if (row.alias2 !== '' && /^[A-Za-z][A-Za-z0-9]*$/.test(row.alias2)) {
+          allAliases.push({
+            alias: row.alias2,
+            artistId: i,
+            createdBy: 'liamohkay@gmail.com'
+          })
+        }
+      })
+
+      // allAliases.forEach(async (alias: any) => await prisma.Alias.create({data: alias}))
+      await prisma.Alias.createMany({ data: allAliases });
+      console.log('Added alias data')
     })
 }
 
