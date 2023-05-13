@@ -10,21 +10,21 @@ datasource db {
 
 model Artist {
   id        Int      @id @default(autoincrement())
-  artist    String   @unique
+  artist    String
   genre     String
   pronoun   String
   artistUrl String
-  song      String
+  songUrl   String
   createdAt DateTime @default(now())
   createdBy String
   Alias     Alias[]
 }
 
 model Alias {
-  id       Int    @id @default(autoincrement())
-  alias    String
-  artist   Artist @relation(fields: [artistId], references: [id])
-  artistId Int
+  id        Int    @id @default(autoincrement())
+  alias     String
+  artist    Artist @relation(fields: [artistId], references: [id])
+  artistId  Int
   createdAt DateTime @default(now())
   createdBy String
 
