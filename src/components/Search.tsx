@@ -3,10 +3,10 @@ import ArtistCard from '~/components/ArtistCard';
 import { api } from "~/utils/api";
 import { RouterOutputs } from '~/utils/api';
 
-type Artist = RouterOutputs['getAll'][number];
+type Artist = RouterOutputs['getArtists'][number];
 
-const SearchPage = () => {
-  const allArtists = api.getAll.useQuery().data;
+const Search: React.FC = (): JSX.Element => {
+  const allArtists = api.getArtists.useQuery().data;
   const [searchText, setSearchText] = useState('');
   const [filteredArtists, setFilteredArtists] = useState(allArtists);
 
@@ -46,4 +46,4 @@ const SearchPage = () => {
   );
 }
 
-export default SearchPage;
+export default Search;
