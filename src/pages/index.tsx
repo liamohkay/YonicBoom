@@ -1,22 +1,9 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import ArtistCard from "~/components/ArtistCard";
-import { api } from "~/utils/api";
-
-interface Artist {
-  id: number;
-  artist: string;
-  genre: string;
-  pronoun: string;
-  artistUrl: string;
-  songUrl: string;
-  createdAt: Date;
-  createdBy: string;
-}
+import Search from '~/pages/Search';
 
 const Home: NextPage = () => {
-  const allArtists: Array<any> | undefined = api.getAll.useQuery().data;
 
   return (
     <>
@@ -60,7 +47,7 @@ const Home: NextPage = () => {
             </Link>
           </div>
         </div>
-        {allArtists?.map((artist: Artist) => <ArtistCard key={artist.id} artist={artist} />)}
+        <Search />
       </main>
     </>
   );
