@@ -4,8 +4,19 @@ import Link from "next/link";
 import ArtistCard from "~/components/ArtistCard";
 import { api } from "~/utils/api";
 
+interface Artist {
+  id: number;
+  artist: string;
+  genre: string;
+  pronoun: string;
+  artistUrl: string;
+  songUrl: string;
+  createdAt: Date;
+  createdBy: string;
+}
+
 const Home: NextPage = () => {
-  const allArtists: Array[] = api.getAll.useQuery().data;
+  const allArtists: Array<any> | undefined = api.getAll.useQuery().data;
 
   return (
     <>
@@ -49,7 +60,7 @@ const Home: NextPage = () => {
             </Link>
           </div>
         </div>
-        {allArtists?.map((artist: any) => <ArtistCard key={artist.id} artist={artist} />)}
+        {allArtists?.map((artist: Artist) => <ArtistCard key={artist.id} artist={artist} />)}
       </main>
     </>
   );
