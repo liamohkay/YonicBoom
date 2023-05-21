@@ -20,7 +20,7 @@ const SearchPage = () => {
     if (allArtists && searchText === '') {
       setFilteredArtists(allArtists)
     } else {
-      let newFiltered = allArtists?.filter((artist: Artist) => {
+      const newFiltered = allArtists?.filter((artist: Artist) => {
         return artist.artist.toLowerCase().includes(searchText.toLowerCase());
       });
       setFilteredArtists(newFiltered);
@@ -37,7 +37,7 @@ const SearchPage = () => {
           onChange={(e) => setSearchText(e.target.value)}>
         </input>
       </div>
-      <div className="flex flex-wrap w-full md:w-auto">
+      <div className="flex flex-wrap w-full md:w-auto gap-5 justify-center">
         {filteredArtists?.map((artist: Artist) => (
           <ArtistCard key={artist.id} artist={artist} />
         ))}

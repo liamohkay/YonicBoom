@@ -8,7 +8,7 @@ interface ArtistCardProps {
 
 const ArtistCard: React.FC<ArtistCardProps> = ({ artist }): JSX.Element => {
   return (
-    <div className="w-1/5 rounded shadow-lg bg-white">
+    <div className="w-1/5 min-w-[20rem] rounded shadow-lg bg-white">
       <div className="px-6 py-4 ">
         <p>{artist.artist}</p>
         <p>{artist.pronoun}</p>
