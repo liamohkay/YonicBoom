@@ -37,7 +37,7 @@ const SearchPage = () => {
           onChange={(e) => setSearchText(e.target.value)}>
         </input>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-wrap w-full md:w-auto">
         {filteredArtists?.map((artist: Artist) => (
           <ArtistCard key={artist.id} artist={artist} />
         ))}
