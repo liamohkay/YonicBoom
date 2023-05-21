@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import Search from '~/pages/Search';
+import SearchPage from '~/pages/SearchPage';
 
 const Home: NextPage = () => {
 
@@ -47,7 +47,7 @@ const Home: NextPage = () => {
             </Link>
           </div>
         </div>
-        <Search />
+        <SearchPage />
       </main>
     </>
   );

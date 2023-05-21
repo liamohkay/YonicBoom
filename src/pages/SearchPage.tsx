@@ -3,21 +3,9 @@ import ArtistCard from '~/components/ArtistCard';
 import { api } from "~/utils/api";
 import { RouterOutputs } from '~/utils/api';
 
-
 type Artist = RouterOutputs['getAll'][number];
 
-// interface Artist {
-//   id: number;
-//   artist: string;
-//   genre: string;
-//   pronoun: string;
-//   artistUrl: string;
-//   songUrl: string;
-//   createdAt: Date;
-//   createdBy: string;
-// }
-
-const Search = () => {
+const SearchPage = () => {
   const allArtists = api.getAll.useQuery().data;
   const [filteredArtists, setFilteredArtists] = useState(allArtists);
 
@@ -27,14 +15,12 @@ const Search = () => {
   }, [allArtists])
   
   return (
-    <>
+    <div className="flex flex-col">
       {filteredArtists?.map((artist: Artist) => (
-        <div key={artist.id}>
-          <ArtistCard artist={artist} />
-        </div>
+        <ArtistCard key={artist.id} artist={artist} />
       ))}
-    </>
+    </div>
   );
 }
 
-export default Search;
+export default SearchPage;
