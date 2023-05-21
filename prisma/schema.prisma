@@ -9,8 +9,8 @@ datasource db {
 }
 
 model Artist {
-  id        Int     @id @default(autoincrement())
-  artist    String  @unique
+  id        Int      @id @default(autoincrement())
+  artist    String   @unique
   genre     String
   pronoun   String
   artistUrl String
@@ -21,12 +21,20 @@ model Artist {
 }
 
 model Alias {
-  id        Int    @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   alias     String
-  artist    Artist @relation(fields: [artistId], references: [id])
+  artist    Artist   @relation(fields: [artistId], references: [id])
   artistId  Int
   createdAt DateTime @default(now())
   createdBy String
 
   @@index([artistId])
+}
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.Text
+  post      String   @db.Text
+  createdAt DateTime @default(now())
+  createdBy String
 }
