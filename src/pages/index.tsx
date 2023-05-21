@@ -1,11 +1,11 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import ArtistCard  from "~/components/ArtistCard";
+import ArtistCard from "~/components/ArtistCard";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const allArtists: Array<any> = api.getAll.useQuery().data;
+  const allArtists: Array[] = api.getAll.useQuery().data;
 
   return (
     <>
@@ -49,7 +49,7 @@ const Home: NextPage = () => {
             </Link>
           </div>
         </div>
-        {allArtists?.map((artist: any) => <ArtistCard artist={artist} />)}
+        {allArtists?.map((artist: any) => <ArtistCard key={artist.id} artist={artist} />)}
       </main>
     </>
   );

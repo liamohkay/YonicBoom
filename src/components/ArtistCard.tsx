@@ -2,18 +2,22 @@ import React from 'react';
 import internal from 'stream';
 import { api } from "~/utils/api";
 
-type props = {
-
+interface Artist {
+  id: Number;
+  artist: String;
+  genre: String;
+  pronoun: String;
+  artistUrl: String;
+  songUrl: String;
+  createdAt: Date;
+  createdBy: String;
 }
 
-
-const ArtistCard: React.FC = (props) => {
-  const { artist } = props;
+const ArtistCard = (artist: Artist) => {
 
   return (
-    <div className="max-w-m rounded overflow-hidden shadow-lg">
-      {artist.artist}
-    </div>
+    <>
+    </>
   )
 }
 
