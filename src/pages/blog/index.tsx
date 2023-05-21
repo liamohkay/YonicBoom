@@ -1,5 +1,6 @@
 import React from 'react';
-import { api, RouterOutputs } from '~/utils/api';
+import { api } from '~/utils/api';
+import { RouterOutputs } from '~/utils/api';
 
 type Blog = RouterOutputs['getBlogs'][number];
 interface BlogPostProps {
@@ -10,7 +11,7 @@ const Blog: React.FC = (): JSX.Element => {
   const blogs = api.getBlogs.useQuery().data;
   return (
     <>
-      { blogs?.map((blog: Blog) => <BlogPost blog={blog} />)}
+      { blogs?.map((blog: Blog) => <BlogPost key={blog.id} blog={blog} />)}
     </>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ArtistCard from '~/components/ArtistCard';
-import { api, RouterOutputs } from "~/utils/api";
+import { api } from "~/utils/api";
+import { RouterOutputs } from '~/utils/api';
 
 type Artist = RouterOutputs['getArtists'][number];
 

@@ -25,6 +25,7 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
+        <Link href="/blog">Blog</Link>
         <Search />
       </main>
     </>
