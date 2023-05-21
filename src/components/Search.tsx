@@ -3,10 +3,10 @@ import ArtistCard from '~/components/ArtistCard';
 import { api } from "~/utils/api";
 import { RouterOutputs } from '~/utils/api';
 
-type Artist = RouterOutputs['getAll'][number];
+type Artist = RouterOutputs['getArtists'][number];
 
-const SearchPage = () => {
-  const allArtists = api.getAll.useQuery().data;
+const Search: React.FC = (): JSX.Element => {
+  const allArtists = api.getArtists.useQuery().data;
   const [searchText, setSearchText] = useState('');
   const [filteredArtists, setFilteredArtists] = useState(allArtists);
 
@@ -15,7 +15,7 @@ const SearchPage = () => {
     setFilteredArtists(allArtists);
   }, [allArtists])
   
-  // Filter based on user input
+  // Filter artsits by name based on user input
   useEffect(() => {
     if (allArtists && searchText === '') {
       setFilteredArtists(allArtists)
@@ -29,14 +29,12 @@ const SearchPage = () => {
 
   return (
     <>
-      <div>
-        <input 
-          type="text" 
-          placeholder="Search for an artist"
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-          onChange={(e) => setSearchText(e.target.value)}>
-        </input>
-      </div>
+      <input 
+        type="text" 
+        placeholder="Search for an artist"
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+        onChange={(e) => setSearchText(e.target.value)}>
+      </input>
       <div className="flex flex-wrap w-full md:w-auto gap-5 justify-center">
         {filteredArtists?.map((artist: Artist) => (
           <ArtistCard key={artist.id} artist={artist} />
@@ -46,4 +44,4 @@ const SearchPage = () => {
   );
 }
 
-export default SearchPage;
+export default Search;
