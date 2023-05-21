@@ -32,9 +32,11 @@ model Alias {
 }
 
 model Blog {
-  id        Int      @id @default(autoincrement())
-  title     String   @db.Text
-  post      String   @db.Text
-  createdAt DateTime @default(now())
-  createdBy String
+  id           Int      @id @default(autoincrement())
+  title        String   @db.Text
+  description  String
+  post         String   @db.Text
+  imageUrl     String
+  createdAt    DateTime @default(now())
+  createdBy    String
 }

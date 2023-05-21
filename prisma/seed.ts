@@ -18,9 +18,9 @@ async function main() {
       let allArtists: any = [];
       let allAliases: any = [];
 
+      /* Seed artist data */
       results.forEach((row: any, i: number) => {
         Object.keys(row).map((col: string) => row[col] = row[col].trim());
-        
         allArtists.push({
           id: i,
           artist: row.artist,
@@ -31,10 +31,10 @@ async function main() {
           createdBy: 'liamohkay@gmail.com'
         })
       })
-
       await prisma.Artist.createMany({ data: allArtists, skipDuplicates: true })
       console.log('Added artist data')
 
+      /* Seed artist aliases */
       results.forEach((row: any, i: number) => {
         Object.keys(row).map((col: string) => row[col] = row[col].trim());
         if (row.alias1 !== '' && /^[A-Za-z][A-Za-z0-9]*$/.test(row.alias1)) {
@@ -44,7 +44,6 @@ async function main() {
             createdBy: 'liamohkay@gmail.com'
           })
         } 
-        
         if (row.alias2 !== '' && /^[A-Za-z][A-Za-z0-9]*$/.test(row.alias2)) {
           allAliases.push({
             alias: row.alias2,
@@ -53,10 +52,20 @@ async function main() {
           })
         }
       })
-
-      // allAliases.forEach(async (alias: any) => await prisma.Alias.create({data: alias}))
       await prisma.Alias.createMany({ data: allAliases });
       console.log('Added alias data')
+
+      /* Seed first blog post */
+      const firstBlogPost = await prisma.blog.create({
+        data: {
+          title: 'Welcome!',
+          description: 'What is YonicBoom?',
+          post: `YonicBoom! is a radio show based out of Hollow Earth Radio, in Seattle\'s Capitol Hill area. YB has taken many forms over the years, and currently is run by Andrea Nela. It began as a skill share show in 2014 and has been on air ever since.\n\n This database will serve to highlight women and non-binary artists across all sub genres of dance music. If you're interested in adding a name, drop a line!\n\nThis space will be used in future to highlight artists and releases.\n\nCheers!\nYB`,
+          imageUrl: 'https://lirp.cdn-website.com/383569e1/dms3rep/multi/opt/Cream-and-Brown-Organic-Welcome-Yard-Sign-1920w-960w.png',
+          createdBy: 'kspector@gmail.com' 
+        }
+      })
+      console.log('Added first blog post by Kendall');
     })
 }
 

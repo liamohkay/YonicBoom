@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouterOutputs } from '~/utils/api';
 
-type Artist = RouterOutputs['getAll'][number]; 
+type Artist = RouterOutputs['getArtists'][number]; 
 interface ArtistCardProps {
   artist: Artist;
 }
