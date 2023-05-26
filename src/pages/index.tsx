@@ -1,15 +1,17 @@
-import { type NextPage } from "next";
 import Head from "next/head";
+import { type NextPage } from "next";
+import { useUser, SignIn } from '@clerk/nextjs';
 import Search from '~/components/Search';
 import Navbar from '~/components/Navbar';
 
 const Home: NextPage = () => {
+  // const user = useUser();
 
-  return (
+  return ( 
     <>
       <Head>
         <title>YonicBoom</title>
-        <meta name="description" content="women, nonbinary, and trans artists in dance" />
+        <meta name="description" content="women, nonbinary, and trans artists in dance" /> 
         <link rel="icon" href="/favicon.ico" />
         <Navbar />
       </Head>
