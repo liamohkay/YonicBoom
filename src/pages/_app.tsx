@@ -1,21 +1,19 @@
-import { type AppType } from "next/app";
-import { type Session } from "next-auth";
-// import { SessionProvider } from "next-auth/react";
-import { ClerkProvider } from '@clerk/nextjs'
-import { api } from "~/utils/api";
 import "~/styles/globals.css";
-
-const MyApp: AppType<{ session: Session | null }> = ({
-  Component,
-  pageProps: { session, ...pageProps },
-}) => {
+import { api } from "~/utils/api";
+import { type AppType, AppProps } from "next/app";
+import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/nextjs';
+ 
+const MyApp: AppType = ({ Component, pageProps }: AppProps) => {
   return (
     <ClerkProvider {...pageProps}>
-      {/* <SessionProvider session={session}> */}
+      <SignedIn>
         <Component {...pageProps} />
-      {/* </SessionProvider> */}
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
     </ClerkProvider>
   );
-};
+}
 
 export default api.withTRPC(MyApp);
