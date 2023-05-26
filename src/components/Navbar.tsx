@@ -2,8 +2,7 @@ import React from 'react';
 import { useUser } from '@clerk/clerk-react';
 
 const Navbar: React.FC = (): JSX.Element => {
-  // const { user } = useUser();
-  // if (!user) return <></>;
+  const { user } = useUser();
   return (
     <>
       <nav className="bg-gray-800">
@@ -45,7 +44,7 @@ const Navbar: React.FC = (): JSX.Element => {
                 <div>
                   <button type="button" className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                     <span className="sr-only">Open user menu</span>
-                    <img className="h-8 w-8 rounded-full" src="" alt="" />
+                    <img className="h-8 w-8 rounded-full" src={user?.profileImageUrl} alt="" />
                   </button>
                 </div>
               </div>

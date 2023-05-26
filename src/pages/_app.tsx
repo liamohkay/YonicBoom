@@ -1,12 +1,17 @@
 import "~/styles/globals.css";
 import { api } from "~/utils/api";
-import { ClerkProvider } from '@clerk/nextjs'
 import { type AppType, AppProps } from "next/app";
+import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/nextjs';
  
 const MyApp: AppType = ({ Component, pageProps }: AppProps) => {
   return (
     <ClerkProvider {...pageProps}>
-      <Component {...pageProps} />
+      <SignedIn>
+        <Component {...pageProps} />
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
     </ClerkProvider>
   );
 }
