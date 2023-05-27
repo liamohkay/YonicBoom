@@ -3,8 +3,6 @@ import ArtistCard from '~/components/ArtistCard';
 import Loading from '~/components/Loading';
 import { api } from "~/utils/api";
 import { RouterOutputs } from '~/utils/api'
-
-
 type Artist = RouterOutputs['getArtists'][number];
 
 const Search: React.FC = (): JSX.Element => {

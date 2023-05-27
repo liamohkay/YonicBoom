@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { type NextPage } from "next";
-import Discover from '~/components/Discover';
-import Navbar from '~/components/Navbar';
+import Discover from '~/pages/Discover';
 
 const Home: NextPage = () => {
   return ( 
