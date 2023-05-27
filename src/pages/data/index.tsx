@@ -22,11 +22,7 @@ const columns = [
   columnHelper.accessor('artistUrl', {
     header: 'Artist Profile',
     cell: info => info.getValue() 
-  }),
-  columnHelper.accessor('songUrl', {
-    header: 'Song',
-    cell: info => info.getValue() 
-  }),
+  })
 ]
 
 const ArtistDataTable = () => {
@@ -40,13 +36,13 @@ const ArtistDataTable = () => {
 
   return (
     <>
-      <div className="p-2">
-        <table>
-          <thead>
+      <div className="overflow-hidden border rounded-lg p-2">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
             {table?.getHeaderGroups().map(headerGroup => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map(header => (
-                  <th key={header.id}>
+                  <th key={header.id} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -58,11 +54,11 @@ const ArtistDataTable = () => {
               </tr>
             ))}
           </thead>
-          <tbody>
+          <tbody className="bg-white divide-y divide-gray-200">
             {table?.getRowModel().rows.map(row => (
               <tr key={row.id}>
                 {row.getVisibleCells().map(cell => (
-                  <td key={cell.id}>
+                  <td key={cell.id} className="px-6 py-4 whitespace-nowrap">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
