@@ -22,8 +22,8 @@ const Navbar: React.FC = (): JSX.Element => {
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <span>Yonic</span><span>Boom</span>
-              </div>
+                <span className="text-white">YonicBoom</span>
+              </div> 
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   <Link href="/" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Discover</Link>
