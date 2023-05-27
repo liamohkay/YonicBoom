@@ -9,8 +9,7 @@ import {
   createColumnHelper, 
   getCoreRowModel,
   getFilteredRowModel, 
-  getPaginationRowModel,
-  PaginationState
+  getPaginationRowModel
 } from '@tanstack/react-table';
 import Loading from '~/components/Loading';
 
