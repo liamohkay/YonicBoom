@@ -27,12 +27,13 @@ const columns = [
 
 const ArtistDataTable = () => {
   const { data } = api?.getArtists.useQuery();
+  if (!data) return <Loading />;
+  
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel()
   });
-  if (!data) return <Loading />;
 
   return (
     <>
