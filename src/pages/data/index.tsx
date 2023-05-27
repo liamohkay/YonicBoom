@@ -50,7 +50,7 @@ const ArtistDataTable = () => {
   return (
     <>
       { !artistData ? <Loading /> : (
-        <div className="overflow-hidden border rounded-lg p-2">
+        <div className="overflow-scroll border rounded-lg p-2">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               {table.getHeaderGroups().map(headerGroup => (
@@ -104,36 +104,36 @@ const ArtistDataTable = () => {
           </table>
 
           <div className="h-2" />
-            <div className="flex items-center gap-2">
+            <div className="inline-flex -space-x-px items-center gap-2">
               <button
-                className="border rounded p-1"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 onClick={() => table.setPageIndex(0)}
                 disabled={!table.getCanPreviousPage()}
               >
                 {'<<'}
               </button>
               <button
-                className="border rounded p-1"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 onClick={() => table.previousPage()}
                 disabled={!table.getCanPreviousPage()}
               >
                 {'<'}
               </button>
               <button
-                className="border rounded p-1"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 onClick={() => table.nextPage()}
                 disabled={!table.getCanNextPage()}
               >
                 {'>'}
               </button>
               <button
-                className="border rounded p-1"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 onClick={() => table.setPageIndex(table.getPageCount() - 1)}
                 disabled={!table.getCanNextPage()}
               >
                 {'>>'}
               </button>
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-2 ml-50">
                 <div>Page</div>
                 <strong>
                   {table.getState().pagination.pageIndex + 1} of{' '}
