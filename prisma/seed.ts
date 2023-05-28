@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
-const { PrismaClient } = require('@prisma/client')
+const puppeteer = require('puppeteer');
+const { PrismaClient } = require('@prisma/client');
 type Dictionary = { [index: string]: string }
 
 const filePath: string = path.resolve(__dirname, 'artist_alias_seed.csv');
@@ -17,20 +18,38 @@ async function main() {
     .on('end', async () => {
       let allArtists: any = [];
       let allAliases: any = [];
+      // const spanRegex = /(?<=background-image: url).*?(?=class="sc-artwork)/;
+      // const urlRegex = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/
+      // const browser = await puppeteer.launch();
+      // const [page] = await browser.pages();
 
       /* Seed artist data */
       results.forEach((row: any, i: number) => {
         Object.keys(row).map((col: string) => row[col] = row[col].trim());
+        let imgUrl;
+        // try {
+        //   page.goto(row.artistUrl, { waitUntil: 'networkidle0' })
+        //     .then((page: any) => page.evaluate(() => document.querySelector('*')!.outerHTML))
+        //     .then((data: string) => data.match(spanRegex)![0])
+        //     .then((spanText: string) => spanText.match(urlRegex)![0].replace('&quot' , ''))
+        //     .finally((url: string) => imgUrl = !url ? '' : url)
+        // } catch (error) {
+        //   console.error(error);
+        // }
+
         allArtists.push({
           id: i,
           artist: row.artist,
           genre: row.genre,
           pronoun: row.pronoun,
           artistUrl: row.artistUrl,
+          imgUrl: imgUrl ?? '',
           songUrl: row.songUrl,
           createdBy: 'liamohkay@gmail.com'
         })
+        
       })
+      // await browser.close();
       await prisma.Artist.createMany({ data: allArtists, skipDuplicates: true })
       console.log('Added artist data')
 

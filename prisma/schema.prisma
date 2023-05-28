@@ -15,6 +15,7 @@ model Artist {
   pronoun   String
   artistUrl String
   songUrl   String
+  imgUrl    String
   createdAt DateTime @default(now())
   createdBy String
   Alias     Alias[]
