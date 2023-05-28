@@ -18,24 +18,24 @@ async function main() {
     .on('end', async () => {
       let allArtists: any = [];
       let allAliases: any = [];
-      const spanRegex = /(?<=background-image: url).*?(?=class="sc-artwork)/;
-      const urlRegex = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/
-      const browser = await puppeteer.launch();
-      const [page] = await browser.pages();
+      // const spanRegex = /(?<=background-image: url).*?(?=class="sc-artwork)/;
+      // const urlRegex = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/
+      // const browser = await puppeteer.launch();
+      // const [page] = await browser.pages();
 
       /* Seed artist data */
       results.forEach((row: any, i: number) => {
         Object.keys(row).map((col: string) => row[col] = row[col].trim());
         let imgUrl;
-        try {
-          page.goto(row.artistUrl, { waitUntil: 'networkidle0' })
-            .then((page: any) => page.evaluate(() => document.querySelector('*')!.outerHTML))
-            .then((data: string) => data.match(spanRegex)![0])
-            .then((spanText: string) => spanText.match(urlRegex)![0].replace('&quot' , ''))
-            .finally((url: string) => imgUrl = !url ? '' : url)
-        } catch (error) {
-          console.error(error);
-        }
+        // try {
+        //   page.goto(row.artistUrl, { waitUntil: 'networkidle0' })
+        //     .then((page: any) => page.evaluate(() => document.querySelector('*')!.outerHTML))
+        //     .then((data: string) => data.match(spanRegex)![0])
+        //     .then((spanText: string) => spanText.match(urlRegex)![0].replace('&quot' , ''))
+        //     .finally((url: string) => imgUrl = !url ? '' : url)
+        // } catch (error) {
+        //   console.error(error);
+        // }
 
         allArtists.push({
           id: i,
@@ -49,7 +49,7 @@ async function main() {
         })
         
       })
-      await browser.close();
+      // await browser.close();
       await prisma.Artist.createMany({ data: allArtists, skipDuplicates: true })
       console.log('Added artist data')
 

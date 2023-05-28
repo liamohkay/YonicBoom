@@ -1,6 +1,7 @@
 import React from 'react';
 import { api } from '~/utils/api';
 import type { RouterOutputs } from '~/utils/api';
+import { CSVLink } from 'react-csv';
 import { 
   Column,
   Table as ReactTable,
@@ -12,6 +13,7 @@ import {
   getPaginationRowModel
 } from '@tanstack/react-table';
 import Loading from '~/components/Loading';
+import { AirVent } from 'lucide-react';
 
 type Artist = RouterOutputs['getArtists'][number];
 
@@ -103,7 +105,10 @@ const ArtistDataTable = () => {
           </table>
 
           <div className="h-2" />
-            <div className="inline-flex -space-x-px items-center gap-2">
+            <CSVLink data={artistData} className="fpx-4 py-2 ocus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >
+              Download CSV
+            </CSVLink>
+            <div className="inline-flex -space-x-px items-center gap-2">  
               <button
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 onClick={() => table.setPageIndex(0)}
