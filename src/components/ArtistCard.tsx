@@ -1,5 +1,7 @@
 import React from 'react';
 import { RouterOutputs } from '~/utils/api';
+import Image from 'next/image';
+
 
 type Artist = RouterOutputs['getArtists'][number]; 
 interface ArtistCardProps {
@@ -13,6 +15,9 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }): JSX.Element => {
         <p>{artist.artist}</p>
         <p>{artist.pronoun}</p>
         <p>{artist.genre}</p>
+        <a href={artist.artistUrl}>
+          <Image src={artist.artistUrl.includes('bandcamp') ? "/bc.png" : "/sc.png" } alt="artistProfile" width="25" height="25"/>
+        </a>
       </div>
     </div>
   )
