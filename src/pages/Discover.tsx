@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ArtistCard from '~/components/ArtistCard';
-import Loading from '~/components/Loading';
 import { api } from "~/utils/api";
 import { RouterOutputs } from '~/utils/api'
 type Artist = RouterOutputs['getArtists'][number];
@@ -37,7 +36,7 @@ const Search: React.FC = (): JSX.Element => {
       </input>
       <div className="flex flex-wrap w-full md:w-auto gap-5 justify-center">
         {filteredArtists?.map((artist: Artist) => (
-          <ArtistCard key={artist.id} artist={artist} color={`text-${artist.genre.replace(' ', '')}`} />
+          <ArtistCard key={artist.id} artist={artist} />
         ))}
       </div>
     </>

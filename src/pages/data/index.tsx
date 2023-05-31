@@ -14,6 +14,35 @@ import {
 } from '@tanstack/react-table';
 import Loading from '~/components/Loading';
 
+const colors =  {
+  'left field': 'text-[#99ADFF]/50',
+  'acid': 'text-[#F08080]/50',
+  'expirimental': 'text-[#A8FF33]/50',
+  'bass': 'text-[#3386FF]/50',
+  'pop': 'text-[#FF33DD]/50', 
+  'uk funky': 'text-[#BF15E9]/50',
+  'garage': 'text-[#00C85E]/50',
+  'footwerk': 'text-[#FFD134]/50',
+  'electro': 'text-[#34FF8D]/50',
+  'dancehall': 'text-[#FF34A6]/50',
+  'ambient': 'text-[#90FFFD]/50',
+  'jungle': 'text-[#3232FF]/50',
+  'drum and bass': 'text-[#5132FF]/50',
+  'tech house': 'text-[#FFA832]/50',
+  'jazz': 'text-[#2325AD]/50',
+  'disco': 'text-[#C146F6]/50',
+  'dubstep': 'text-[#E6F646]/50',
+  'dub': 'text-[#C3F646]/50',
+  'techno': 'text-[#e31507]/50', 
+  'gqom': 'text-[#',
+  ']nu wave': 'text-[#00FFF3]/50',
+  'rap': 'text-[#E892FF]/50',
+  'hip hop': 'text-[#AA64BD]/50',
+  'donk': 'text-[#E540DD]/50',
+  'jersey club': 'text-[#F9FF2A]/50',
+  'house': 'text-[#2A2DFF]/50',
+}
+
 type Artist = RouterOutputs['getArtists'][number];
 
 const columnHelper = createColumnHelper<Artist>();
@@ -24,7 +53,7 @@ const columns = [
   }),
   columnHelper.accessor('genre', {
     header: 'Genre',
-    cell: info => info.getValue() 
+    cell: info => <span className={`${colors[info.getValue() as keyof typeof colors]}`}>{info.getValue()}</span>
   }),
   columnHelper.accessor('pronoun', {
     header: 'Pronoun(s)',
@@ -47,7 +76,7 @@ const ArtistDataTable = () => {
   });
 
   if (isLoading) return <Loading />
-  
+
   return (
     <>
       <div className="overflow-scroll border rounded-lg p-2">
@@ -105,10 +134,10 @@ const ArtistDataTable = () => {
       </div>
 
       <footer className="fixed inset-x-0 bottom-0">
-        <CSVLink data={data} className="fpx-4 py-2 ocus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >
-          Download CSV
-        </CSVLink>
         <div className="inline-flex -space-x-px items-center gap-2">  
+          <CSVLink data={data ?? []} className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >
+            Download CSV
+          </CSVLink>
           <button
             className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             onClick={() => table.setPageIndex(0)}
@@ -151,6 +180,7 @@ const ArtistDataTable = () => {
               defaultValue={table.getState().pagination.pageIndex + 1}
               onChange={e => {
                 const page = e.target.value ? Number(e.target.value) - 1 : 0
+        
                 table.setPageIndex(page)
               }}
               className="border p-1 rounded w-16"
@@ -169,6 +199,7 @@ const ArtistDataTable = () => {
             ))}
           </select>
         </div>
+        
       </footer>
   </>
 );
