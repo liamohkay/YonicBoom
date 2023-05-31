@@ -5,13 +5,14 @@ import { colors } from '~/utils/genres';
 
 type Artist = RouterOutputs['getArtists'][number]; 
 interface ArtistCardProps {
-  artist: Artist;
+  artist: Artist,
+  color: string
 }
 interface IDictionary<TValue> {
   [id: string]: TValue;
 }
-const ArtistCard: React.FC<ArtistCardProps> = ({ artist }): JSX.Element => {
-  let genreColor = `text-${artist.genre}`.replace(' ', '');
+const ArtistCard: React.FC<ArtistCardProps> = ({ artist, color }): JSX.Element => {
+  console.log(color)
   return (
     <div className="w-1/5 min-w-[25rem] rounded shadow-lg bg-white">
       <div className="flex px-6 py-4">
@@ -20,7 +21,7 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }): JSX.Element => {
           <div>
             <span className="font-bold text-l">{artist.artist}</span><span className="text-slate-500">{` (${artist.pronoun})`}</span>
           </div>
-          <span className={genreColor}>{artist.genre}</span>
+          <span className={color}>{artist.genre}</span>
         </div>
         <a href={artist.artistUrl}>
           <Image src={artist.artistUrl.includes('bandcamp') ? "/bc.png" : "/sc.png" } alt="artistProfile" width="25" height="25" />

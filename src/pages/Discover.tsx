@@ -37,7 +37,7 @@ const Search: React.FC = (): JSX.Element => {
       </input>
       <div className="flex flex-wrap w-full md:w-auto gap-5 justify-center">
         {filteredArtists?.map((artist: Artist) => (
-          <ArtistCard key={artist.id} artist={artist} />
+          <ArtistCard key={artist.id} artist={artist} color={`text-${artist.genre.replace(' ', '')}`} />
         ))}
       </div>
     </>
