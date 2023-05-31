@@ -57,6 +57,7 @@ const Home: NextPage = () => {
             type="text" 
             placeholder="Search for an artist"
             className="appearance-none bg-transparent border-0 border-b-2 border-gray-700 w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-gray-400" 
+            value={searchText}
             onChange={(e) => setSearchText(e.target.value)}>
           </input>
           <label htmlFor="underline_select" className="sr-only">Underline select</label>
