@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RouterOutputs } from '~/utils/api';
 import Image from 'next/image';
+import ReactPlayer from 'react-player/lazy'
 
 type Artist = RouterOutputs['getArtists'][number]; 
 interface ArtistCardProps {
@@ -42,17 +43,30 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }): JSX.Element => {
     <div className="w-1/5 min-w-[25rem] rounded shadow-lg bg-white">
       <div className="flex px-6 py-4">
         <Image src='/no-pic.png' alt="noPicture" width="75" height="75" />
-        <div className="flex flex-col px-5">
+        <div className="flex flex-col px-5 mt-[-5]">
           <div>
             <span className="font-bold text-l">{artist.artist}</span><span className="text-slate-400">{` (${artist.pronoun})`}</span>
           </div>
           <span className={style}>{artist.genre}</span>
         </div>
-        <div className="flex-row"></div>
-          <a href={artist.artistUrl}>
-            <Image src={artist.artistUrl.includes('bandcamp') ? "/bc.png" : "/sc.png" } alt="artistProfile" width="25" height="25" />
-          </a>
-          {/* <Image src='/headphone-off.png' alt="headoff" width="50" height="25" /> */}
+      </div>
+      <div className="flex flex-row-reverse gap-3 px-3 pb-2 -mt-8">
+        <a href={artist.songUrl} target="_blank">
+          <Image 
+            src="/waveform.svg"
+            alt="artistProfile" 
+            width="25" 
+            height="25"
+          />
+        </a>
+        <a href={artist.artistUrl} target="_blank">
+          <Image 
+            src={artist.artistUrl.includes('bandcamp') ? "/bc.svg" : "/sc.svg" } 
+            alt="artistProfile" 
+            width="25" 
+            height="25"
+          />
+        </a>
       </div>
     </div>
   )
