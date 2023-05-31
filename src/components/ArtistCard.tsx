@@ -51,7 +51,7 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }): JSX.Element => {
         </div>
       </div>
       <div className="flex flex-row-reverse gap-3 px-3 pb-2 -mt-8">
-        <a href={artist.songUrl} target="_blank">
+        <a href={artist.songUrl} target="_blank" className="border-orange-400">
           <Image 
             src="/waveform.svg"
             alt="artistProfile" 

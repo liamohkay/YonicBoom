@@ -29,12 +29,14 @@ const Navbar: React.FC = (): JSX.Element => {
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <span className="text-white font-bold">YonicBoom</span>
+                <span className="text-white font-bold">YonicBoom!</span>
               </div> 
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   <Link href="/" className={router.pathname === "/" ? navStyles.active : navStyles.inactive}>Discover</Link>
                   <Link href="/data" className={router.pathname === "/data" ? navStyles.active : navStyles.inactive}>Data</Link>
+                  <Link href="/about" className={router.pathname === "/about" ? navStyles.active : navStyles.inactive}>About</Link>
+                  <span className={navStyles.inactive}>{`Blog (coming soon)`}</span>
                   {/* <Link href="/blog" className={router.pathname === "/blog" ? navStyles.active : navStyles.inactive}>Blog</Link> */}
                 </div>
               </div>
