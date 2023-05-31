@@ -1,12 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
 import { useUser } from '@clerk/clerk-react';
+import { useRouter } from "next/router";
+
+const navStyles = {
+  active: "border text-white rounded-md px-3 py-2 text-sm font-medium",
+  inactive: "text-gray-300 hover:border-dotted hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+}
 
 const Navbar: React.FC = (): JSX.Element => {
   const { user } = useUser();
+  const router = useRouter();
   return (
     <>
-      <nav className="bg-gray-800">
+      <nav className="bg-[#8b72b5]/80">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -22,13 +29,13 @@ const Navbar: React.FC = (): JSX.Element => {
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <span className="text-white">YonicBoom</span>
+                <span className="text-white font-bold">YonicBoom</span>
               </div> 
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
-                  <Link href="/" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Discover</Link>
-                  <Link href="/data" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Data</Link>
-                  <Link href="/blog" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Blog</Link>
+                  <Link href="/" className={router.pathname === "/" ? navStyles.active : navStyles.inactive}>Discover</Link>
+                  <Link href="/data" className={router.pathname === "/data" ? navStyles.active : navStyles.inactive}>Data</Link>
+                  {/* <Link href="/blog" className={router.pathname === "/blog" ? navStyles.active : navStyles.inactive}>Blog</Link> */}
                 </div>
               </div>
             </div>
@@ -46,9 +53,9 @@ const Navbar: React.FC = (): JSX.Element => {
 
         <div className="sm:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2">
-            <Link href="/" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Discover</Link>
-            <Link href="/data" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Data</Link>
-            <Link href="/blog" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Blog</Link>
+            <Link href="/" className={router.pathname === "/" ? navStyles.active : navStyles.inactive}>Discover</Link>
+            <Link href="/data" className={router.pathname === "/data" ? navStyles.active : navStyles.inactive}>Data</Link>
+            {/* <Link href="/blog" className={router.pathname === "/blog" ? navStyles.active : navStyles.inactive}>Blog</Link> */}
           </div>
         </div>
       </nav>
@@ -56,4 +63,4 @@ const Navbar: React.FC = (): JSX.Element => {
   );
 }
 
-export default Navbar
+export default Navbar;

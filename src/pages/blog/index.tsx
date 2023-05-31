@@ -1,4 +1,5 @@
 import React from 'react';
+import { type NextPage } from "next";
 import { api } from '~/utils/api';
 import { RouterOutputs } from '~/utils/api';
 
@@ -7,7 +8,7 @@ interface BlogPostProps {
   blog: Blog;
 }
 
-const Blog: React.FC = (): JSX.Element => {
+const Blog: NextPage = () => {
   const blogs = api.getBlogs.useQuery().data;
   return (
     <>

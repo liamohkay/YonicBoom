@@ -79,9 +79,9 @@ const ArtistDataTable = () => {
 
   return (
     <>
-      <div className="overflow-scroll border rounded-lg p-2">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+      <div className="rounded-lg">
+        <table className="min-w-full divide-y divide-black-200">
+          <thead className="bg-gray-100">
             {table.getHeaderGroups().map(headerGroup => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map(header => (
@@ -103,7 +103,7 @@ const ArtistDataTable = () => {
               </tr>
             ))}
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white divide-y divide-black-200">
             {table.getRowModel().rows.map(row => (
               <tr key={row.id}>
                 {row.getVisibleCells().map(cell => (
@@ -133,59 +133,11 @@ const ArtistDataTable = () => {
         </table>
       </div>
 
-      <footer className="fixed inset-x-0 bottom-0">
-        <div className="inline-flex -space-x-px items-center gap-2">  
-          <CSVLink data={data ?? []} className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >
+      <footer className="inset-x-0 bottom-0 pt-3 pb-3 bg-gray-100">
+        <div className="flex content-center -space-x-px items-center gap-2">  
+          <CSVLink data={data ?? []} className="px-4 py-2 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >
             Download CSV
           </CSVLink>
-          <button
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            onClick={() => table.setPageIndex(0)}
-            disabled={!table.getCanPreviousPage()}
-          >
-            {'<<'}
-          </button>
-          <button
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-            >
-            {'<'}
-          </button>
-          <button
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-            >
-            {'>'}
-          </button>
-          <button
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-            disabled={!table.getCanNextPage()}
-          >
-            {'>>'}
-          </button>
-          <span className="flex items-center gap-2 ml-50">
-            <div>Page</div>
-            <strong>
-              {table.getState().pagination.pageIndex + 1} of{' '}
-              {table.getPageCount()}
-            </strong>
-          </span>
-          <span className="flex items-center gap-1">
-            | Go to page:
-            <input
-              type="number"
-              defaultValue={table.getState().pagination.pageIndex + 1}
-              onChange={e => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0
-        
-                table.setPageIndex(page)
-              }}
-              className="border p-1 rounded w-16"
-              />
-          </span>
           <select
             value={table.getState().pagination.pageSize}
             onChange={e => {
@@ -198,6 +150,59 @@ const ArtistDataTable = () => {
               </option>
             ))}
           </select>
+
+          <button
+            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-[#8b72b5]/80 rounded-lg hover:bg-[#8b72b5]"
+            onClick={() => table.setPageIndex(0)}
+            disabled={!table.getCanPreviousPage()}
+          >
+            {'<<'}
+          </button>
+          <button
+            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-[#8b72b5]/80 rounded-lg hover:bg-[#8b72b5]"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+            >
+            {'<'}
+          </button>
+
+          <span className="flex items-center gap-2 ml-50 text-sm">
+            <span>
+              {table.getState().pagination.pageIndex + 1} / {table.getPageCount()}
+            </span>
+          </span>
+
+          <button
+            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-[#8b72b5]/80 rounded-lg hover:bg-[#8b72b5]"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+            >
+            {'>'}
+          </button>
+          <button
+            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-[#8b72b5]/80 rounded-lg hover:bg-[#8b72b5]"
+            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+            disabled={!table.getCanNextPage()}
+          >
+            {'>>'}
+          </button>
+
+          <span className="flex items-center gap-1">
+            Go to page:
+            <input
+              type="number"
+              defaultValue={table.getState().pagination.pageIndex + 1}
+              onChange={e => {
+                const page = e.target.value ? Number(e.target.value) - 1 : 0
+        
+                table.setPageIndex(page)
+              }}
+              className="border rounded w-16"
+              />
+          </span>
+
+          
+
         </div>
         
       </footer>
