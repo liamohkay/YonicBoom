@@ -75,7 +75,13 @@ const ArtistDataTable = () => {
     getPaginationRowModel: getPaginationRowModel()
   });
 
-  if (isLoading) return <Loading />
+  if (isLoading) {
+    return (
+      <div className="absolute top-0 right-0 w-screen h-screen flex justify-center items-center">
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -133,16 +139,17 @@ const ArtistDataTable = () => {
         </table>
       </div>
 
-      <footer className="inset-x-0 bottom-0 pt-3 pb-3 bg-gray-100">
-        <div className="flex content-center -space-x-px items-center gap-2">  
-          <CSVLink data={data ?? []} className="px-4 py-2 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >
-            Download CSV
-          </CSVLink>
+      <footer className="w-screen inset-x-0 bottom-0 pt-3 pb-3 flex justify-between mx-3 bg-gray-100">
+        <CSVLink data={data ?? []} className="px-4 py-2 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >
+          Download CSV
+        </CSVLink>
+        <div className="flex justify-center gap-2">
           <select
             value={table.getState().pagination.pageSize}
             onChange={e => {
               table.setPageSize(Number(e.target.value))
             }}
+            className="bg-gray-100"
             >
             {[10, 25, 50].map(pageSize => (
               <option key={pageSize} value={pageSize}>
@@ -194,17 +201,13 @@ const ArtistDataTable = () => {
               defaultValue={table.getState().pagination.pageIndex + 1}
               onChange={e => {
                 const page = e.target.value ? Number(e.target.value) - 1 : 0
-        
                 table.setPageIndex(page)
               }}
-              className="border rounded w-16"
+              className="border border-slate bg-gray-100 rounded w-16 text-center"
               />
           </span>
-
-          
-
         </div>
-        
+        <div className="px-4 py-2 bg-gray-100 text-gray-100">Download CSV</div>
       </footer>
   </>
 );

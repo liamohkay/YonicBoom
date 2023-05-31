@@ -5,6 +5,7 @@ import ArtistCard from '~/components/ArtistCard';
 import { api } from "~/utils/api";
 import { RouterOutputs } from '~/utils/api';
 import { genres } from '~/utils/genres';
+import Loading from '~/components/Loading';
 
 type Artist = RouterOutputs['getArtists'][number];
 
@@ -64,9 +65,11 @@ const Home: NextPage = () => {
           </select>
         </div>
         <div className="flex flex-wrap w-full md:w-auto gap-5 justify-center relative">
-          {filteredArtists?.map((artist: Artist) => (
-            <ArtistCard key={artist.id} artist={artist} />
-          ))}
+          
+          { !allArtists ? 
+          (<Loading /> ) :
+          (filteredArtists?.map((artist: Artist) => <ArtistCard key={artist.id} artist={artist} />))
+          }
         </div>
       </main> 
     </>
