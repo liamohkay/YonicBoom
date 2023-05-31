@@ -75,7 +75,13 @@ const ArtistDataTable = () => {
     getPaginationRowModel: getPaginationRowModel()
   });
 
-  if (isLoading) return <Loading />
+  if (isLoading) {
+    return (
+      <div className="absolute top-0 right-0 w-screen h-screen flex justify-center items-center">
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <>
