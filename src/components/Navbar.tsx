@@ -13,7 +13,7 @@ const Navbar: React.FC = (): JSX.Element => {
   const router = useRouter();
   return (
     <>
-      <nav className="bg-[#8b72b5]/80">
+      <nav className="bg-[#8b72b5]/80 border-b-[.5px] border-slate-600">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
