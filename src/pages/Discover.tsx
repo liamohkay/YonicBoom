@@ -21,7 +21,7 @@ const Search: React.FC = (): JSX.Element => {
     if (selectedGenre === 'All Genres' && searchText === '') {
       setFilteredArtists(allArtists); 
     } else {
-      let newFiltered = allArtists?.filter((artist: Artist) => {
+      const newFiltered = allArtists?.filter((artist: Artist) => {
         if (selectedGenre === 'All Genres') {
           return artist.artist.toLowerCase().includes(searchText.toLowerCase());
         } else if (searchText === '') {
@@ -46,7 +46,7 @@ const Search: React.FC = (): JSX.Element => {
         <label htmlFor="underline_select" className="sr-only">Underline select</label>
         <select value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)} id="underline_select" placeholder="Filter Genre" className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
             <option value="All Genres">All Genres</option>
-            { genres.map(genre => <option value={genre}>{genre}</option>)}
+            { genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
         </select>
       </head>
       <div className="flex flex-wrap w-full md:w-auto gap-5 justify-center relative">
