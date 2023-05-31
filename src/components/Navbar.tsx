@@ -4,8 +4,8 @@ import { useUser } from '@clerk/clerk-react';
 import { useRouter } from "next/router";
 
 const navStyles = {
-  active: "bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium",
-  inactive: "text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+  active: "border text-white rounded-md px-3 py-2 text-sm font-medium",
+  inactive: "text-gray-300 hover:border-dotted hover:text-white rounded-md px-3 py-2 text-sm font-medium"
 }
 
 const Navbar: React.FC = (): JSX.Element => {
@@ -29,7 +29,7 @@ const Navbar: React.FC = (): JSX.Element => {
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <span className="text-white">YonicBoom</span>
+                <span className="text-white font-bold">YonicBoom</span>
               </div> 
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">

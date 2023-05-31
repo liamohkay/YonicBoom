@@ -39,7 +39,6 @@ const Home: NextPage = () => {
 
   return ( 
     <>
-      
       <Head>
         <title>YonicBoom</title>
         <meta name="description" content="women, nonbinary, and trans artists in dance" /> 
@@ -50,11 +49,16 @@ const Home: NextPage = () => {
           <input 
             type="text" 
             placeholder="Search for an artist"
-            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+            className="appearance-none bg-transparent border-0 border-b-2 border-gray-700 w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-gray-400" 
             onChange={(e) => setSearchText(e.target.value)}>
           </input>
           <label htmlFor="underline_select" className="sr-only">Underline select</label>
-          <select value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)} id="underline_select" placeholder="Filter Genre" className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+          <select 
+            value={selectedGenre} 
+            onChange={(e) => setSelectedGenre(e.target.value)} 
+            id="underline_select" 
+            placeholder="Filter Genre" 
+            className="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-gray-400 peer">
               <option value="All Genres">All Genres</option>
               { genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
           </select>
