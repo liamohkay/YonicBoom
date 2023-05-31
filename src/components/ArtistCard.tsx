@@ -10,16 +10,15 @@ interface ArtistCardProps {
 interface IDictionary<TValue> {
   [id: string]: TValue;
 }
-
 const ArtistCard: React.FC<ArtistCardProps> = ({ artist }): JSX.Element => {
-  let genreColor = `text-[${colors[artist.genre as keyof ObjectType]}]`;
+  let genreColor = `text-${artist.genre}`.replace(' ', '');
   return (
     <div className="w-1/5 min-w-[25rem] rounded shadow-lg bg-white">
       <div className="flex px-6 py-4">
         <Image src='/no-pic.png' alt="noPicture" width="75" height="75" />
         <div className="flex flex-col px-5">
           <div>
-            <span className="font-bold text-l">{artist.artist}</span><span className="font-italic">{` (${artist.pronoun})`}</span>
+            <span className="font-bold text-l">{artist.artist}</span><span className="text-slate-500">{` (${artist.pronoun})`}</span>
           </div>
           <span className={genreColor}>{artist.genre}</span>
         </div>
