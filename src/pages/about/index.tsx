@@ -16,7 +16,7 @@ const About: NextPage = () => {
         This space will be used in future to highlight artists and releases. 
         <br />
         <br />
-        Cheers! 
+        Cheers!
         <br />
         YB 
       </p>
