@@ -72,8 +72,8 @@ const Home: NextPage = () => {
               <option value="All Genres">All Genres</option>
               { genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
           </select>
-          <button onClick={getRandomArtist} className="text-white bg-gradient-to-r from-purple-400 via-purple-400 to-purple-500 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 text-center mr-2">
-            Randomize
+          <button onClick={getRandomArtist} className="whitespace-nowrap text-black font-medium outline rounded-lg text-sm px-5 text-center mr-2 hover:outline-dashed">
+            Random Artist!
           </button>
         </div>
         <div className="flex flex-wrap w-full md:w-auto gap-5 justify-center relative">
