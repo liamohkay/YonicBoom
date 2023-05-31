@@ -29,6 +29,6 @@
     "**/*.cjs",
     "**/*.mjs", 
     "prisma/test.js"
-  ],
+, "prisma/imgUrl.js"  ],
   "exclude": ["node_modules"]
 }
