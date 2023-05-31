@@ -43,7 +43,7 @@ const Search: React.FC = (): JSX.Element => {
           className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
           onChange={(e) => setSearchText(e.target.value)}>
         </input>
-        <label for="underline_select" className="sr-only">Underline select</label>
+        <label htmlFor="underline_select" className="sr-only">Underline select</label>
         <select value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)} id="underline_select" placeholder="Filter Genre" className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
             <option value="All Genres">All Genres</option>
             { genres.map(genre => <option value={genre}>{genre}</option>)}
