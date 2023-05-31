@@ -38,6 +38,12 @@ const Home: NextPage = () => {
     }
   }, [searchText, selectedGenre])
 
+  const getRandomArtist = () => {
+    if (!allArtists) return;
+    let artist = allArtists[Math.floor(Math.random() * allArtists.length)];
+    setSearchText(artist.artist ?? '');
+  }
+
   return ( 
     <>
       <Head>
@@ -45,7 +51,7 @@ const Home: NextPage = () => {
         <meta name="description" content="women, nonbinary, and trans artists in dance" /> 
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex flex-col min-h-screen items-center bg-[#FFEFE7] gap-12 px-5 py-10">
+      <main className="flex flex-col min-h-screen items-center bg-[#FFEFE7] gap-12 px-2 py-10">
         <div className="flex w-8/12 gap-5 align-top">
           <input 
             type="text" 
@@ -63,6 +69,9 @@ const Home: NextPage = () => {
               <option value="All Genres">All Genres</option>
               { genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
           </select>
+          <button onClick={getRandomArtist} className="text-white bg-gradient-to-r from-purple-400 via-purple-400 to-purple-500 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 text-center mr-2">
+            Randomize
+          </button>
         </div>
         <div className="flex flex-wrap w-full md:w-auto gap-5 justify-center relative">
           
