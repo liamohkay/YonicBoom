@@ -40,7 +40,7 @@ const Home: NextPage = () => {
 
   const getRandomArtist = () => {
     if (!allArtists) return;
-    let artist = allArtists[Math.floor(Math.random() * allArtists.length)];
+    const artist = allArtists[Math.floor(Math.random() * allArtists.length)];
     if (artist) {
       setSearchText(artist.artist ?? '');
     }
