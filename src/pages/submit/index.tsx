@@ -4,18 +4,19 @@ import React, { useState } from 'react';
 
 const styles = {
   formInput: `
-    bg-gray-200 
-    appearance-none 
-    border-2 
-    border-gray-200
-    rounded
+    appearance-none
+    bg-transparent
+    border-0
+    border-b-2
+    border-gray-700
     w-full
-    py-2
-    px-4
     text-gray-700
+    mr-3
+    py-1
+    px-2
     leading-tight
-    focus:outline-none 
-    focus:bg-white
+    focus:outline-none
+    focus:border-gray-400
   `,
   formHeader: `
     block
@@ -52,15 +53,17 @@ interface FormInputProps {
   label?: string
 }
 
-interface SelectInputProps {
+interface FormSelectProps {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  options: Array<string>,
   fieldName: string,
   value: string,
-  label?: string
+  label?: string,
+  placeholder?: string
 }
 
-const FormInput: React.FC<FormInputProps> = ({ ...props }): JSX.Element => {
-  const { handleInput, fieldName, value, label } = props;
+const FormSelect: React.FC<FormSelectProps> = ({ ...props }): JSX.Element => {
+  const { handleInput, options, fieldName, value, label, placeholder } = props;
   return (
     <>
       <div className="md:w-1/3">
@@ -69,59 +72,72 @@ const FormInput: React.FC<FormInputProps> = ({ ...props }): JSX.Element => {
         </label>
         </div>
         <div className="md:w-2/3">
-        <input 
-          className={styles.formInput}
-          type="text" 
+        <select 
+          className={styles.formSelect}
           value={value}
           id={fieldName} 
           name={fieldName}
           onChange={handleInput} 
-        />
+        >
+          {options?.map((val: string) => <option key={val} value={val}>{val}</option>)}
+        </select>
       </div>
     </>
   )
 }
 
-// const SelectInput: React.FC<SelectInputProps> = ({ ...props }): JSX.Element => {
-//   const { handleInput, fieldName, value, label } = props;
-//   return (
-//     <>
-//       <div className="md:w-1/3">
-//         <label className={styles.formHeader} htmlFor={fieldName}>
-//           {label ?? fieldName}
-//         </label>
-//         </div>
-//         <div className="md:w-2/3">
-//         <select 
-//           className={styles.formInput}
-//           type="text" 
-//           value={value}
-//           id={fieldName} 
-//           name={fieldName}
-//           onChange={handleInput} 
-//         />
-//       </div>
-//     </>
-//   )
-// }
+const FormInput: React.FC<FormInputProps> = ({ ...props }): JSX.Element => {
+  const { handleInput, fieldName, value, label } = props;
+  return (
+    <>
+      <div className="inline-flex">
+        <div className="md:w-1/4">
+          <label className={styles.formHeader} htmlFor={fieldName}>
+            {label ?? fieldName}
+          </label>
+        </div>
+        <div className="md:w-3/4">
+          <input 
+            className={styles.formInput}
+            type="text" 
+            value={value}
+            id={fieldName} 
+            name={fieldName}
+            onChange={handleInput} 
+          />
+        </div>
+      </div>
+    </>
+  )
+}
 
 const Submit: NextPage = () => {
   const [input, setInput] = useState({
     artist: '',
-    artistUrl: ''
+    pronoun: '',
+    artistUrl: '',
+    songUrl: '',
   })
+
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInput({ ...input, [e.target.name]: e.target.value });
   }
+
   return (
     <>
       <form className="w-full max-w-full">
-        <div className="md:flex md:items-center mb-6">
+        <div className="md:flex-col md:items-center mb-6">
           <FormInput 
             handleInput={handleInput}
             fieldName="artist"
             value={input.artist}
             label="Artist Name"
+          />
+          <FormSelect 
+            handleInput={handleInput}
+            fieldName="pronoun"
+            value={input.pronoun}
+            label="Pronoun"
           />
           <FormInput 
             handleInput={handleInput}
@@ -131,8 +147,8 @@ const Submit: NextPage = () => {
           />
           <FormInput 
             handleInput={handleInput}
-            fieldName="artistUrl"
-            value={input.artistUrl}
+            fieldName="songUrl"
+            value={input.songUrl}
             label="Soundcloud Song URL"
           />
         </div>
