@@ -79,8 +79,8 @@ const Home: NextPage = () => {
         <div className="flex flex-wrap w-full md:w-auto gap-5 justify-center relative">
           
           { !allArtists ? 
-          (<Loading /> ) :
-          (filteredArtists?.map((artist: Artist) => <ArtistCard key={artist.id} artist={artist} />))
+            (<Loading /> ) :
+            (filteredArtists?.map((artist: Artist) => <ArtistCard key={artist.id} artist={artist} />))
           }
         </div>
       </main> 

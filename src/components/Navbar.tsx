@@ -35,6 +35,7 @@ const Navbar: React.FC = (): JSX.Element => {
                 <div className="flex space-x-4">
                   <Link href="/" className={router.pathname === "/" ? navStyles.active : navStyles.inactive}>Discover</Link>
                   <Link href="/data" className={router.pathname === "/data" ? navStyles.active : navStyles.inactive}>Data</Link>
+                  <Link href="/submit" className={router.pathname === "/submit" ? navStyles.active : navStyles.inactive}>Submit</Link>
                   <Link href="/about" className={router.pathname === "/about" ? navStyles.active : navStyles.inactive}>About</Link>
                   <span className={navStyles.inactive}>{`Blog (coming soon)`}</span>
                   {/* <Link href="/blog" className={router.pathname === "/blog" ? navStyles.active : navStyles.inactive}>Blog</Link> */}
@@ -57,6 +58,8 @@ const Navbar: React.FC = (): JSX.Element => {
           <div className="space-y-1 px-2 pb-3 pt-2">
             <Link href="/" className={router.pathname === "/" ? navStyles.active : navStyles.inactive}>Discover</Link>
             <Link href="/data" className={router.pathname === "/data" ? navStyles.active : navStyles.inactive}>Data</Link>
+            <Link href="/submit" className={router.pathname === "/submit" ? navStyles.active : navStyles.inactive}>Submit</Link>
+            <Link href="/about" className={router.pathname === "/about" ? navStyles.active : navStyles.inactive}>About</Link>
             {/* <Link href="/blog" className={router.pathname === "/blog" ? navStyles.active : navStyles.inactive}>Blog</Link> */}
           </div>
         </div>
