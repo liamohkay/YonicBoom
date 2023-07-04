@@ -6,6 +6,7 @@ import { api } from "~/utils/api";
 import { RouterOutputs } from '~/utils/api';
 import { genres } from '~/utils/genres';
 import Loading from '~/components/Loading';
+import { TimeoutError } from "puppeteer";
 
 type Artist = RouterOutputs['getArtists'][number];
 
@@ -14,11 +15,17 @@ const Home: NextPage = () => {
   const [searchText, setSearchText] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('All Genres');
   const [filteredArtists, setFilteredArtists] = useState(allArtists);
+  const [inputTimeout, setInputTimeout] = useState(0);
 
   useEffect(() => {
     if (!allArtists) return;
     setFilteredArtists(allArtists);
   }, [allArtists])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {}, 250);
+    return () => clearTimeout(timer);
+  }, [searchText])
 
   // Filter based on genre or artist name
   useEffect(() => {
@@ -26,7 +33,7 @@ const Home: NextPage = () => {
       setFilteredArtists(allArtists); 
     } else {
       const newFiltered = allArtists?.filter((artist: Artist) => {
-        if (selectedGenre === 'All Genres') {
+        if (selectedGenre === 'All Genres' && inputTimeout) {
           return artist.artist.toLowerCase().includes(searchText.toLowerCase());
         } else if (searchText === '') {
           return artist.genre === selectedGenre;
